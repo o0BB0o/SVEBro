@@ -24,6 +24,11 @@ class DuelFragment : Fragment(R.layout.fragment_duel) {
         _binding = FragmentDuelBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        binding.opponentHpHolder.setBackgroundResource(viewModel.opponentClassBackgroundR[viewModel.opponentClass.value!!])
+        binding.playerHpHolder.setBackgroundResource(viewModel.selectedClassBackgroundR[viewModel.selectedLeader.value!!.classType])
+        Glide.with(this)
+            .load(viewModel.selectedLeader.value!!.bgPath)
+            .into(binding.leader)
         return binding.root
     }
 
@@ -35,11 +40,6 @@ class DuelFragment : Fragment(R.layout.fragment_duel) {
         viewModel.isEmoteTabOpen.observe(viewLifecycleOwner) { isOpen ->
             updateEmoteTab(isOpen)
         }
-        binding.opponentHpHolder.setBackgroundResource(viewModel.opponentClassBackgroundR[viewModel.opponentClass.value!!])
-        binding.playerHpHolder.setBackgroundResource(viewModel.selectedClassBackgroundR[viewModel.selectedLeader.value!!.classType])
-        Glide.with(this)
-            .load(viewModel.selectedLeader.value!!.bgPath) // Your image URL here
-            .into(binding.leader)
     }
 
     private fun updateEmoteTab(isOpen: Boolean){

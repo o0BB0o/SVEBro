@@ -49,7 +49,6 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
         leaderRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val leaderAdapter = LeaderAdapter(emptyList()) { selectedLeader ->
-            // Toast.makeText(context, "Selected: ${selectedLeader.name}", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
             viewModel.selectedLeader.value = selectedLeader
         }

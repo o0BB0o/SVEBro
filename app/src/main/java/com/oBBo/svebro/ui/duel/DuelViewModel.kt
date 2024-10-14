@@ -104,32 +104,6 @@ class DuelViewModel(context: Context) : ViewModel() {
         playSound("emote7")
     }
 
-    //TODO replace with Database
-//    fun initSounds(context: Context) {
-//        val audioAttributes = AudioAttributes.Builder()
-//            .setUsage(AudioAttributes.USAGE_MEDIA)
-//            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-//            .build()
-//
-//        soundPool = SoundPool.Builder()
-//            .setMaxStreams(10)
-//            .setAudioAttributes(audioAttributes)
-//            .build()
-//
-//        soundMap = mapOf(
-//            "fanfare" to soundPool.load(context, R.raw.ya_fanfare, 1),
-//            "turn_end" to soundPool.load(context, R.raw.ya_turn_end, 1),
-//            "turn_start" to soundPool.load(context, R.raw.ya_turn_start, 1),
-//            "emote1" to soundPool.load(context, R.raw.ya1, 1),
-//            "emote2" to soundPool.load(context, R.raw.ya2, 1),
-//            "emote3" to soundPool.load(context, R.raw.ya3, 1),
-//            "emote4" to soundPool.load(context, R.raw.ya4, 1),
-//            "emote5" to soundPool.load(context, R.raw.ya5, 1),
-//            "emote6" to soundPool.load(context, R.raw.ya6, 1),
-//            "emote7" to soundPool.load(context, R.raw.ya7, 1)
-//        )
-//    }
-
     fun startTurn(){
         toggleTurn()
         maxPPIncrease()
@@ -167,7 +141,6 @@ class DuelViewModel(context: Context) : ViewModel() {
         else {
             _currentPlayerRemainingPP.value = newCurrPP
             setPlaypointState(_currentPlayerRemainingPP.value!! - 1, PPState.ACTIVATED_USABLE)
-            // Log.d("TEST", PPStates.value.toString())
         }
     }
 
@@ -178,7 +151,6 @@ class DuelViewModel(context: Context) : ViewModel() {
                 ?: PPState.NOT_ACTIVATED) == PPState.ACTIVATED_USABLE
         ){
             setPlaypointState(_currentPlayerRemainingPP.value!!, PPState.ACTIVATED_NOT_USABLE)
-            // Log.d("TEST", PPStates.value.toString())
         }
     }
 
