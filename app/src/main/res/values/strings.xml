@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SVE Bro</string>
+
+    <string name="emote1">emote1</string>
+    <string name="emote2">emote2</string>
+    <string name="emote3">emote3</string>
+    <string name="emote4">emote4</string>
+    <string name="emote5">emote5</string>
+    <string name="emote6">emote6</string>
+    <string name="emote7">emote7</string>
+
+</resources>

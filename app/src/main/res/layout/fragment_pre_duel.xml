@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.preduel.PreDuelFragment">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.oBBo.svebro.ui.duel.DuelViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pre_duel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/src_assets_preduel_background">
+
+        <TextView
+            android:id="@+id/choose_leader_text"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/src_assets_phrase_background"
+            android:gravity="center"
+            android:text="选择你的高手"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+
+        <LinearLayout
+            android:id="@+id/opponent_class_selection_space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/src_assets_role_panel_20_red"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/choose_leader_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.8">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_weight=".2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(0)}"
+                    android:src="@drawable/src_assets_cards_role_role_spirit"/>
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(1)}"
+                    android:src="@drawable/src_assets_cards_role_role_royal" />
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(2)}"
+                    android:src="@drawable/src_assets_cards_role_role_master" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_weight=".2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(3)}"
+                    android:src="@drawable/src_assets_cards_role_role_nightmare" />
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(4)}"
+                    android:src="@drawable/src_assets_cards_role_role_bishop" />
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(5)}"
+                    android:src="@drawable/src_assets_cards_role_role_neutrality" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_weight=".2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/src_assets_role_panel_20_blue"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_leader_text"
+            app:layout_constraintWidth_percent="0.8">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_weight=".2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/user_class_btn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_spirit" />
+
+                <ImageButton
+                    android:id="@+id/user_class_btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_royal" />
+
+                <ImageButton
+                    android:id="@+id/user_class_btn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_master" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_weight=".2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/user_class_btn4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_nightmare" />
+
+                <ImageButton
+                    android:id="@+id/user_class_btn5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_bishop" />
+
+                <ImageButton
+                    android:id="@+id/user_class_btn6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_neutrality" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_weight=".2" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/selected_leader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="小鸭 嘎嘎"
+            android:text="@{viewModel.selectedLeader.name}"
+            android:textColor="#FFC107"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/to_duel_btn"
+            app:layout_constraintEnd_toEndOf="@+id/to_duel_btn"
+            app:layout_constraintStart_toStartOf="@+id/to_duel_btn"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+        <TextView
+            android:id="@+id/to_duel_btn"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:background="@drawable/src_assets_role_btn_start_02_off"
+            android:gravity="center"
+            android:text="准备战斗!!"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            android:visibility="@{viewModel.selectedLeader != null ? View.VISIBLE : View.GONE}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

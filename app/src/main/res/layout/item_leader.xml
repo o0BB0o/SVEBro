@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/recycler_leader_image"
+        android:layout_width="64dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ya" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/recycler_leader_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="Character Name"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/recycler_leader_select_btn"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/src_assets_role_btn_start_02_off"
+            android:gravity="center"
+            android:text="选择" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

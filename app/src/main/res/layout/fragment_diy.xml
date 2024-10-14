@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.oBBo.svebro.ui.diy.DIYViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/src_assets_preduel_background"
+        tools:context=".ui.diy.DIYFragment">
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35000002"
+            tools:layout_editor_absoluteX="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/select_zip_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight=".3"
+                    android:background="@drawable/src_assets_role_btn_start_02_off"
+                    android:gravity="center"
+                    android:text="选择zip文件"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="选择zip文件" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/diy_zippath_field"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:layout_weight=".6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/diy_zippath_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Please select a zip file"
+                        android:enabled="false"
+                        android:text="@{viewModel.zipFileName}"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/diy_leader_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/diy_leader_name_inputfield"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Leader Name"
+                    android:inputType="text"
+                    android:text="@={viewModel.leaderNameInput}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/diy_class_text_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class: "
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/diy_class_select_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/class_array"
+                    android:selectedItemPosition="@={viewModel.selectedClass}"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/diy_status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@{viewModel.statusText}"
+            android:textColor="@color/design_default_color_error"
+            app:layout_constraintBottom_toTopOf="@+id/diy_proceed_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="If you see this it means u fucked up"
+            android:visibility="@{viewModel.isStatusTextViewVisible()?View.VISIBLE:View.GONE}"/>
+
+        <TextView
+            android:id="@+id/diy_proceed_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/src_assets_role_btn_start_02_off"
+            android:gravity="center"
+            android:text="开始导入"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+            app:layout_constraintWidth_percent=".4"
+            tools:text="开始导入"
+            android:clickable="@{!viewModel.isProcessingZip()}"
+            android:visibility="@{viewModel.isLoadSuccess()?View.GONE:View.VISIBLE}"/>
+
+        <TextView
+            android:id="@+id/diy_finish_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/src_assets_role_btn_start_02_off"
+            android:gravity="center"
+            android:text="准备战斗"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+            app:layout_constraintWidth_percent=".4"
+            tools:text="准备战斗"
+            android:visibility="@{viewModel.isLoadSuccess()?View.VISIBLE:View.GONE}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

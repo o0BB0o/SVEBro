@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/preDuelFragment">
+
+    <fragment
+        android:id="@+id/DIYFragment"
+        android:name="com.oBBo.svebro.ui.diy.DIYFragment"
+        android:label="DIYFragment" />
+    <fragment
+        android:id="@+id/preDuelFragment"
+        android:name="com.oBBo.svebro.ui.preduel.PreDuelFragment"
+        android:label="fragment_pre_duel"
+        tools:layout="@layout/fragment_pre_duel" >
+        <action
+            android:id="@+id/action_preDuelFragment_to_duelFragment"
+            app:destination="@id/duelFragment" />
+        <action
+            android:id="@+id/action_preDuelFragment_to_DIYFragment"
+            app:destination="@id/DIYFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/duelFragment"
+        android:name="com.oBBo.svebro.ui.duel.DuelFragment"
+        android:label="DuelFragment" />
+</navigation>

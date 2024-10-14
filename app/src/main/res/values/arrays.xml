@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="class_array">
+        <item>小妖</item>
+        <item>小皇</item>
+        <item>小法</item>
+        <item>小龙</item>
+        <item>小鬼</item>
+        <item>小教</item>
+        <item>叮咚吧大概</item>
+    </string-array>
+</resources>
