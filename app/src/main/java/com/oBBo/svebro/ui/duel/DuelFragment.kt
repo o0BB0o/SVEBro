@@ -54,29 +54,17 @@ class DuelFragment : Fragment(R.layout.fragment_duel) {
     private fun updateTurnBtn(isTurn: Boolean) {
         if(isTurn) {
             binding.turnStartEnd.setBackgroundResource(R.drawable.src_assets_battle_btn_turn_end_off)
-            binding.turnStartEnd.text = "结束\n回合"
+            binding.turnStartEnd.text = getText(R.string.turn_end)
             binding.turnStartEnd.setOnClickListener(){
                 viewModel.endTurn()
             }
         }
         else{
             binding.turnStartEnd.setBackgroundResource(R.drawable.src_assets_battle_btn_turn_start_off)
-            binding.turnStartEnd.text = "我的\n回合"
+            binding.turnStartEnd.text = getText(R.string.my_turn)
             binding.turnStartEnd.setOnClickListener(){
                 viewModel.startTurn()
             }
         }
     }
-
-//    private fun playSound(soundKey: String) {
-//        soundMap[soundKey]?.let { soundId ->
-//            soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
-//        }
-//    }
-//
-//    private fun playEmote(soundKey: String) {
-//        playSound(soundKey)
-//        viewModel.toggleEmoteTab()
-//    }
-
 }

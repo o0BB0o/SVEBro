@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.oBBo.svebro.databinding.FragmentDiyBinding
 import com.oBBo.svebro.model.Leader
 import com.oBBo.svebro.model.LeaderDao
@@ -27,10 +29,6 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
 class DIYFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = DIYFragment()
-    }
 
     private lateinit var viewModel: DIYViewModel
     private var _binding: FragmentDiyBinding? = null
@@ -75,7 +73,6 @@ class DIYFragment : Fragment() {
                 viewModel.isStatusTextViewVisible.postValue(true)
             }
             else{
-                //TODO add indicator for sql process
                 viewModel.isProcessingZip.value = true
                 binding.diyStatusText.setTextColor(Color.WHITE)
                 viewModel.isStatusTextViewVisible.postValue(true)
@@ -93,6 +90,10 @@ class DIYFragment : Fragment() {
                     }
                 }
             }
+        }
+
+        binding.diyFinishBtn.setOnClickListener{
+            Navigation.findNavController(view).popBackStack()
         }
     }
 
@@ -192,7 +193,7 @@ class DIYFragment : Fragment() {
         GlobalScope.launch {
             val leader = leaderDao.getLeaderById(leaderId)!!
             if(leader==null){
-                //TODO Handle Error
+                //TODO Change !! above and handle Error if leader not found
             }
             leader.bgPath = imageFiles[0]
             leader.emote1Path = audioFiles[0]

@@ -53,18 +53,7 @@ class DuelViewModel(context: Context) : ViewModel() {
             .build())
         .build()
 
-    private val soundMap = mapOf(
-        "fanfare" to soundPool.load(context, R.raw.ya_fanfare, 1),
-        "turn_end" to soundPool.load(context, R.raw.ya_turn_end, 1),
-        "turn_start" to soundPool.load(context, R.raw.ya_turn_start, 1),
-        "emote1" to soundPool.load(context, R.raw.ya1, 1),
-        "emote2" to soundPool.load(context, R.raw.ya2, 1),
-        "emote3" to soundPool.load(context, R.raw.ya3, 1),
-        "emote4" to soundPool.load(context, R.raw.ya4, 1),
-        "emote5" to soundPool.load(context, R.raw.ya5, 1),
-        "emote6" to soundPool.load(context, R.raw.ya6, 1),
-        "emote7" to soundPool.load(context, R.raw.ya7, 1)
-    )
+    var soundMap: MutableMap<String, Int> = mutableMapOf()
 
     val opponentClass = MutableLiveData<Int>().apply { value = 5 }
     val opponentClassSelectionState: MutableLiveData<MutableList<Float>> = MutableLiveData(
@@ -112,7 +101,7 @@ class DuelViewModel(context: Context) : ViewModel() {
         _isCurrentPlayerTurn.value = false
         _isEmoteTabOpen.value = false
         _PPStates.value = MutableList(10) { PPState.NOT_ACTIVATED }
-        playSound("fanfare")
+        playSound("emote7")
     }
 
     //TODO replace with Database
@@ -146,12 +135,12 @@ class DuelViewModel(context: Context) : ViewModel() {
         maxPPIncrease()
         _currentPlayerRemainingPP.value = _currentPlayerMaxPP.value
         updatePPAll()
-        playSound("turn_start")
+        playSound("emote8")
     }
 
     fun endTurn(){
         toggleTurn()
-        playSound("turn_end")
+        playSound("emote9")
     }
 
     fun maxPPIncrease(){
@@ -272,6 +261,28 @@ class DuelViewModel(context: Context) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val tempLeaders = leaderRepository.getCharacterByClass(inputClass)
             filteredLeaders.postValue(tempLeaders)
+        }
+    }
+
+    fun initSoundMapFromLeader(context: Context) {
+        if(selectedLeader.value == null) return
+        val audioFilePaths = listOf(
+            selectedLeader.value!!.emote1Path,
+            selectedLeader.value!!.emote2Path,
+            selectedLeader.value!!.emote3Path,
+            selectedLeader.value!!.emote4Path,
+            selectedLeader.value!!.emote5Path,
+            selectedLeader.value!!.emote6Path,
+            selectedLeader.value!!.emote7Path,
+            selectedLeader.value!!.soundFanfare,
+            selectedLeader.value!!.soundTurnStart,
+            selectedLeader.value!!.soundTurnEnd
+        )
+
+        soundMap.clear()
+        audioFilePaths.forEachIndexed { index, filePath ->
+            val soundId = soundPool.load(filePath, 1)
+            soundMap["emote${index}"] = soundId
         }
     }
 }

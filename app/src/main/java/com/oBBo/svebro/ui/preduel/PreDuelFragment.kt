@@ -49,7 +49,7 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
         leaderRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val leaderAdapter = LeaderAdapter(emptyList()) { selectedLeader ->
-            Toast.makeText(context, "Selected: ${selectedLeader.name}", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(context, "Selected: ${selectedLeader.name}", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
             viewModel.selectedLeader.value = selectedLeader
         }
@@ -66,6 +66,9 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
     }
 
     private fun setupListeners(view:View) {
+        binding.floatingAddLeaderBtn.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_preDuelFragment_to_DIYFragment)
+        }
         binding.userClassBtn1.setOnClickListener{
             viewModel.getFilteredLeader(0)
             showCharacterSelectionPopup()
@@ -108,9 +111,11 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
         }
         viewModel.selectedLeader.observe(viewLifecycleOwner) {
             viewModel.onSelectPlayerClass(it.classType)
+            viewModel.initSoundMapFromLeader(requireContext())
         }
         binding.toDuelBtn.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_preDuelFragment_to_duelFragment)
+            viewModel.restartDuel()
         }
     }
 

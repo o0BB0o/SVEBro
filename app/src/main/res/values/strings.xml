@@ -9,4 +9,6 @@
     <string name="emote6">emote6</string>
     <string name="emote7">emote7</string>
 
+    <string name="my_turn">结束\n回合</string>
+    <string name="turn_end">我的\n回合</string>
 </resources>
