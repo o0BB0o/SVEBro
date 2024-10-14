@@ -84,12 +84,6 @@ class DuelViewModel(context: Context) : ViewModel() {
         _isCurrentPlayerTurn.value = false
         _isEmoteTabOpen.value = false
         _PPStates.value = MutableList(10) { PPState.NOT_ACTIVATED }
-        // TODO delete if structure changed
-//        soundPool.setOnLoadCompleteListener { soundPool, soundId, status ->
-//            if (status == 0 && soundId == 1) {
-//                playSound("fanfare")
-//            }
-//        }
     }
 
     fun restartDuel() {
