@@ -109,8 +109,8 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
             binding.userClassBtn6.alpha = alphaList[5]
         }
         viewModel.selectedLeader.observe(viewLifecycleOwner) {
+            viewModel.initSoundMapFromLeader()
             viewModel.onSelectPlayerClass(it.classType)
-            viewModel.initSoundMapFromLeader(requireContext())
         }
         binding.toDuelBtn.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_preDuelFragment_to_duelFragment)

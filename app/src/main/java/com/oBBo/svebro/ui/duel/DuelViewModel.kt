@@ -230,7 +230,7 @@ class DuelViewModel(context: Context) : ViewModel() {
         }
     }
 
-    fun initSoundMapFromLeader(context: Context) {
+    fun initSoundMapFromLeader() {
         if(selectedLeader.value == null) return
         val audioFilePaths = listOf(
             selectedLeader.value!!.emote1Path,

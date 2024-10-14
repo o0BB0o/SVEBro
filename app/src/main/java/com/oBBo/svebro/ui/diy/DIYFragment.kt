@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -118,6 +119,7 @@ class DIYFragment : Fragment() {
 
     fun validateZipFile(zipUri: Uri?): Boolean {
         if(zipUri==null){
+            Log.d("debug", "zip not found")
             return false
         }
         val inputStream = context?.contentResolver?.openInputStream(zipUri)
@@ -148,6 +150,9 @@ class DIYFragment : Fragment() {
         if (imageCount == 1 && audioCount == 10 && fileCount == 11) {
             return true
         } else {
+            Log.d("debug", "imageCount"+imageCount)
+            Log.d("debug", "audioCount"+audioCount)
+            Log.d("debug", "fileCount"+fileCount)
             return false
         }
     }

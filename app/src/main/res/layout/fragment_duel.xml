@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:src="@drawable/ya" />
+            tools:src="@drawable/kokei" />
 
         <ImageView
             android:id="@+id/gradient_background"
