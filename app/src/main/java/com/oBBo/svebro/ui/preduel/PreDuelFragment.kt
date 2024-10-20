@@ -44,7 +44,9 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
     private fun showCharacterSelectionPopup() {
         val inflater = LayoutInflater.from(requireContext())
         val popupView = inflater.inflate(R.layout.popup_leader_selection, null)
-        val popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true)
+        val displayMetrics = resources.displayMetrics
+        val height = (displayMetrics.heightPixels * 0.8).toInt()
+        val popupWindow = PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, height, true)
         val leaderRecyclerView = popupView.findViewById<RecyclerView>(R.id.leaderRecyclerView)
         leaderRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -61,7 +63,7 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
         }
 
         val anchorView = binding.opponentClassSelectionSpace
-        popupWindow.showAsDropDown(anchorView, 0, 0) // Position the popup relative to anchorView
+        popupWindow.showAsDropDown(anchorView, 0, -anchorView.height) // Position the popup relative to anchorView
     }
 
     private fun setupListeners(view:View) {
