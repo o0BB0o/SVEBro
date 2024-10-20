@@ -68,6 +68,11 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5" />
+
                 <ImageButton
                     android:id="@+id/opponent_class_btn1"
                     android:layout_width="wrap_content"
@@ -97,6 +102,11 @@
                     android:scaleType="fitCenter"
                     android:onClick="@{() -> viewModel.onSelectOpponentClass(2)}"
                     android:src="@drawable/src_assets_cards_role_role_master" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <Space
@@ -118,7 +128,7 @@
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:onClick="@{() -> viewModel.onSelectOpponentClass(3)}"
-                    android:src="@drawable/src_assets_cards_role_role_nightmare" />
+                    android:src="@drawable/src_assets_cards_role_role_dragonclan" />
 
                 <ImageButton
                     android:id="@+id/opponent_class_btn5"
@@ -128,7 +138,7 @@
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:onClick="@{() -> viewModel.onSelectOpponentClass(4)}"
-                    android:src="@drawable/src_assets_cards_role_role_bishop" />
+                    android:src="@drawable/src_assets_cards_role_role_nightmare" />
 
                 <ImageButton
                     android:id="@+id/opponent_class_btn6"
@@ -138,6 +148,16 @@
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:onClick="@{() -> viewModel.onSelectOpponentClass(5)}"
+                    android:src="@drawable/src_assets_cards_role_role_bishop" />
+
+                <ImageButton
+                    android:id="@+id/opponent_class_btn7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{() -> viewModel.onSelectOpponentClass(6)}"
                     android:src="@drawable/src_assets_cards_role_role_neutrality" />
 
             </LinearLayout>
@@ -172,6 +192,11 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5" />
+
                 <ImageButton
                     android:id="@+id/user_class_btn1"
                     android:layout_width="wrap_content"
@@ -198,6 +223,11 @@
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/src_assets_cards_role_role_master" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
             <Space
@@ -218,7 +248,8 @@
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/src_assets_cards_role_role_nightmare" />
+                    android:src="@drawable/src_assets_cards_role_role_dragonclan" />
+
 
                 <ImageButton
                     android:id="@+id/user_class_btn5"
@@ -227,10 +258,19 @@
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/src_assets_cards_role_role_bishop" />
+                    android:src="@drawable/src_assets_cards_role_role_nightmare" />
 
                 <ImageButton
                     android:id="@+id/user_class_btn6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/src_assets_cards_role_role_bishop" />
+
+                <ImageButton
+                    android:id="@+id/user_class_btn7"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

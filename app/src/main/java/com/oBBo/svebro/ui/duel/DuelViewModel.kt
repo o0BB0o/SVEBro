@@ -55,25 +55,25 @@ class DuelViewModel(context: Context) : ViewModel() {
 
     var soundMap: MutableMap<String, Int> = mutableMapOf()
 
-    val opponentClass = MutableLiveData<Int>().apply { value = 5 }
+    val opponentClass = MutableLiveData<Int>().apply { value = 6 }
     val opponentClassSelectionState: MutableLiveData<MutableList<Float>> = MutableLiveData(
-        mutableListOf(0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 1.0f)
+        mutableListOf(0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 1.0f)
     )
     var opponentClassBackgroundR = listOf(R.drawable.src_assets_cards_role_role_spirit_bottom_r,
         R.drawable.src_assets_cards_role_role_royal_bottom_r, R.drawable.src_assets_cards_role_role_master_bottom_r,
-        R.drawable.src_assets_cards_role_role_nightmare_bottom_r, R.drawable.src_assets_cards_role_role_bishop_bottom_r,
-        R.drawable.src_assets_cards_role_role_neutrality_bottom_r)
+        R.drawable.src_assets_cards_role_role_dragonclan_bottom_r, R.drawable.src_assets_cards_role_role_nightmare_bottom_r,
+        R.drawable.src_assets_cards_role_role_bishop_bottom_r, R.drawable.src_assets_cards_role_role_neutrality_bottom_r)
 
 
     var filteredLeaders: MutableLiveData<List<Leader>> = MutableLiveData()
     val playerClassSelectionState: MutableLiveData<MutableList<Float>> = MutableLiveData(
-        mutableListOf(0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f)
+        mutableListOf(0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f)
     )
     val selectedLeader = MutableLiveData<Leader>()
     var selectedClassBackgroundR = listOf(R.drawable.src_assets_cards_role_role_spirit_bottom,
         R.drawable.src_assets_cards_role_role_royal_bottom, R.drawable.src_assets_cards_role_role_master_bottom,
-        R.drawable.src_assets_cards_role_role_nightmare_bottom, R.drawable.src_assets_cards_role_role_bishop_bottom,
-        R.drawable.src_assets_cards_role_role_neutrality_bottom)
+        R.drawable.src_assets_cards_role_role_dragonclan_bottom, R.drawable.src_assets_cards_role_role_nightmare_bottom,
+        R.drawable.src_assets_cards_role_role_bishop_bottom, R.drawable.src_assets_cards_role_role_neutrality_bottom)
 
     init {
         // Initialize default values
@@ -145,6 +145,25 @@ class DuelViewModel(context: Context) : ViewModel() {
                 ?: PPState.NOT_ACTIVATED) == PPState.ACTIVATED_USABLE
         ){
             setPlaypointState(_currentPlayerRemainingPP.value!!, PPState.ACTIVATED_NOT_USABLE)
+        }
+    }
+
+    fun setRemainingPPTo(targetPP: Int) {
+        if(targetPP > _currentPlayerMaxPP.value!!) {
+            return
+        }
+        else if(targetPP > _currentPlayerRemainingPP.value!!) {
+            for (i in _currentPlayerRemainingPP.value!!..<targetPP) {
+                setPlaypointState(i, PPState.ACTIVATED_USABLE)
+                _currentPlayerRemainingPP.value = targetPP
+            }
+
+        }
+        else {
+            for (i in _currentPlayerRemainingPP.value!! - 1 downTo targetPP) {
+                setPlaypointState(i, PPState.ACTIVATED_NOT_USABLE)
+            }
+            _currentPlayerRemainingPP.value = targetPP
         }
     }
 

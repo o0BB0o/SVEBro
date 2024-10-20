@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.SVEBro" parent="Theme.Material3.Dark.NoActionBar" />
+    <style name="Theme.SVEBro" parent="Theme.Material3.Dark.NoActionBar" >
+        <item name="colorPrimaryDark">@color/black</item>
+    </style>
 </resources>

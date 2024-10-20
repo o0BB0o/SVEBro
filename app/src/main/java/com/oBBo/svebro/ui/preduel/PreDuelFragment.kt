@@ -92,6 +92,10 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
             viewModel.getFilteredLeader(5)
             showCharacterSelectionPopup()
         }
+        binding.userClassBtn7.setOnClickListener{
+            viewModel.getFilteredLeader(6)
+            showCharacterSelectionPopup()
+        }
         viewModel.opponentClassSelectionState.observe(viewLifecycleOwner) { alphaList ->
             binding.opponentClassBtn1.alpha = alphaList[0]
             binding.opponentClassBtn2.alpha = alphaList[1]
@@ -99,6 +103,7 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
             binding.opponentClassBtn4.alpha = alphaList[3]
             binding.opponentClassBtn5.alpha = alphaList[4]
             binding.opponentClassBtn6.alpha = alphaList[5]
+            binding.opponentClassBtn7.alpha = alphaList[6]
         }
         viewModel.playerClassSelectionState.observe(viewLifecycleOwner) { alphaList ->
             binding.userClassBtn1.alpha = alphaList[0]
@@ -107,6 +112,7 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
             binding.userClassBtn4.alpha = alphaList[3]
             binding.userClassBtn5.alpha = alphaList[4]
             binding.userClassBtn6.alpha = alphaList[5]
+            binding.userClassBtn7.alpha = alphaList[6]
         }
         viewModel.selectedLeader.observe(viewLifecycleOwner) {
             viewModel.initSoundMapFromLeader()

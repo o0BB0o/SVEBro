@@ -85,6 +85,7 @@ class DIYFragment : Fragment() {
                         processZipFile(viewModel.zipRealUri.value!!, leaderId)
                     } catch (e: Exception) {
                         binding.diyStatusText.setTextColor(Color.RED)
+                        Log.d("debug", e.stackTrace.toString())
                         viewModel.statusText.postValue("Failed to add leader")
                     } finally {
                         viewModel.isProcessingZip.postValue(false)
@@ -132,6 +133,7 @@ class DIYFragment : Fragment() {
         while (zipEntry != null) {
             val fileName = zipEntry.name
             if (!zipEntry.isDirectory) {
+                Log.d("debugZip", zipEntry.name)
                 when {
                     fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") -> {
                         imageCount++
@@ -147,13 +149,13 @@ class DIYFragment : Fragment() {
         zipInputStream.closeEntry()
         zipInputStream.close()
 
-        if (imageCount == 1 && audioCount == 10 && fileCount == 11) {
-            return true
+        return if (imageCount == 1 && audioCount == 10 && fileCount == 11) {
+            true
         } else {
-            Log.d("debug", "imageCount"+imageCount)
-            Log.d("debug", "audioCount"+audioCount)
-            Log.d("debug", "fileCount"+fileCount)
-            return false
+//            Log.d("debug", "imageCount"+imageCount)
+//            Log.d("debug", "audioCount"+audioCount)
+//            Log.d("debug", "fileCount"+fileCount)
+            false
         }
     }
 
@@ -169,6 +171,7 @@ class DIYFragment : Fragment() {
         var zipEntry: ZipEntry? = zipInputStream.nextEntry
         while (zipEntry != null) {
             val fileName = zipEntry.name
+            Log.d("debugZip", zipEntry.name)
             if (!zipEntry.isDirectory) {
                 val file = saveFileToLeaderDirectory(zipInputStream, leaderDir, fileName)
                 extractedFiles.add(file.absolutePath)
@@ -214,7 +217,7 @@ class DIYFragment : Fragment() {
 
             leaderRepository.updateCharacter(leader)
 
-            //TODO Update status text
+
             binding.diyStatusText.setTextColor(Color.GREEN)
             viewModel.statusText.postValue("Leader added!")
             viewModel.isLoadSuccess.postValue(true)

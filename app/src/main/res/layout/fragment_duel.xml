@@ -82,6 +82,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(10)}"
                         android:src="@{viewModel.PPStates[9] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[9] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -104,6 +105,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(9)}"
                         android:src="@{viewModel.PPStates[8] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[8] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -126,6 +128,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(8)}"
                         android:src="@{viewModel.PPStates[7] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[7] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -148,6 +151,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(7)}"
                         android:src="@{viewModel.PPStates[6] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[6] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -170,6 +174,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(6)}"
                         android:src="@{viewModel.PPStates[5] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[5] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -192,6 +197,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(5)}"
                         android:src="@{viewModel.PPStates[4] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[4] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -214,6 +220,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(4)}"
                         android:src="@{viewModel.PPStates[3] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[3] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -236,6 +243,7 @@
                         android:layout_height="match_parent"
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(3)}"
                         android:src="@{viewModel.PPStates[2] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[2] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}" />
 
                     <ImageView
@@ -259,7 +267,8 @@
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
                         android:src="@{viewModel.PPStates[1] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[1] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}"
-                        tools:src="@drawable/src_assets_battle_icon_pp_off"/>
+                        tools:src="@drawable/src_assets_battle_icon_pp_off"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(2)}"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -283,7 +292,8 @@
                         android:background="#00FFFFFF"
                         android:scaleType="fitCenter"
                         android:src="@{viewModel.PPStates[0] == PPState.NOT_ACTIVATED ? @drawable/src_assets_battle_pp_base : (viewModel.PPStates[0] == PPState.ACTIVATED_NOT_USABLE ? @drawable/src_assets_battle_icon_pp_off : @drawable/src_assets_battle_icon_pp_on)}"
-                        tools:src="@drawable/src_assets_battle_icon_pp_on"/>
+                        tools:src="@drawable/src_assets_battle_icon_pp_on"
+                        android:onClick="@{() -> viewModel.setRemainingPPTo(1)}"/>
 
                     <ImageView
                         android:layout_width="match_parent"
