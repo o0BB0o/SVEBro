@@ -196,8 +196,8 @@ class DIYFragment : Fragment() {
     @OptIn(DelicateCoroutinesApi::class)
     fun validateAndUpdateLeaderFiles(filePaths: List<String>, leaderId: Long) {
         val imageFiles = filePaths.filter { it.endsWith(".png") || it.endsWith(".jpg") || it.endsWith(".jpeg") }
-        val audioFiles = filePaths.filter { it.endsWith(".mp3") || it.endsWith(".wav") }
-
+        val audioFiles = filePaths.filter { it.endsWith(".mp3") || it.endsWith(".wav") }.sorted()
+        // Log.d("DD", audioFiles.toString())
         GlobalScope.launch {
             val leader = leaderDao.getLeaderById(leaderId)!!
             if(leader==null){
