@@ -1,6 +1,7 @@
 package com.oBBo.svebro.model
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -18,4 +19,7 @@ interface LeaderDao {
 
     @Query("SELECT * FROM leader WHERE classType = :classType")
     suspend fun getCharacterByClass(classType: Int): List<Leader>
+
+    @Delete
+    suspend fun deleteLeader(leader: Leader)
 }

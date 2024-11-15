@@ -1,20 +1,22 @@
 package com.oBBo.svebro.ui.preduel
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.oBBo.svebro.R
 import com.oBBo.svebro.databinding.FragmentPreDuelBinding
+import com.oBBo.svebro.model.Leader
 import com.oBBo.svebro.ui.duel.DuelViewModel
 import com.oBBo.svebro.ui.duel.DuelViewModelFactory
+import java.io.File
 
 
 class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
@@ -50,10 +52,13 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
         val leaderRecyclerView = popupView.findViewById<RecyclerView>(R.id.leaderRecyclerView)
         leaderRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val leaderAdapter = LeaderAdapter(emptyList()) { selectedLeader ->
+        val leaderAdapter = LeaderAdapter(emptyList(), { selectedLeader ->
             popupWindow.dismiss()
             viewModel.selectedLeader.value = selectedLeader
+        }) { leaderToDelete ->
+            deleteLeaderFromDatabase(leaderToDelete)
         }
+
         leaderRecyclerView.adapter = leaderAdapter
 
         viewModel.filteredLeaders.observe(viewLifecycleOwner) { leaders ->
@@ -64,6 +69,26 @@ class PreDuelFragment : Fragment(R.layout.fragment_pre_duel) {
 
         val anchorView = binding.opponentClassSelectionSpace
         popupWindow.showAsDropDown(anchorView, 0, -anchorView.height) // Position the popup relative to anchorView
+    }
+
+    private fun deleteLeaderFromDatabase(leader: Leader) {
+        viewModel.deleteLeader(leader)
+        val leaderDir = File(requireContext().filesDir, leader.id.toString())
+        deleteLeaderFolder(leaderDir)
+    }
+
+    private fun deleteLeaderFolder(leaderFolder: File) {
+        if (leaderFolder.exists() && leaderFolder.isDirectory) {
+            Log.d("d", "Deleting folder"+leaderFolder.absolutePath)
+            val files = leaderFolder.listFiles()
+            if (files != null) {
+                for (file in files) {
+                    Log.d("d", "Deleting"+file.name)
+                    file.delete()
+                }
+            }
+            leaderFolder.delete()
+        }
     }
 
     private fun setupListeners(view:View) {

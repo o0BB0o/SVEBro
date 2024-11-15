@@ -17,6 +17,7 @@ import com.oBBo.svebro.model.LeaderDatabase
 import com.oBBo.svebro.model.LeaderRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 
 class DuelViewModel(context: Context) : ViewModel() {
     private val db = LeaderDatabase.getDatabase(context)
@@ -246,6 +247,12 @@ class DuelViewModel(context: Context) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val tempLeaders = leaderRepository.getCharacterByClass(inputClass)
             filteredLeaders.postValue(tempLeaders)
+        }
+    }
+
+    fun deleteLeader(leader: Leader) {
+        viewModelScope.launch(Dispatchers.IO) {
+            leaderRepository.deleteLeader(leader)
         }
     }
 

@@ -12,4 +12,6 @@ class LeaderRepository(private val leaderDao : LeaderDao) {
     suspend fun getCharacterByClass(classType: Int): List<Leader> {
         return leaderDao.getCharacterByClass(classType)
     }
+
+    suspend fun deleteLeader(leader: Leader) = leaderDao.deleteLeader(leader)
 }

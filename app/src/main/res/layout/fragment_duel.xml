@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:src="@drawable/kokei" />
+            tools:src="@drawable/ya" />
 
         <ImageView
             android:id="@+id/gradient_background"
@@ -45,18 +45,18 @@
             app:layout_constraintStart_toStartOf="@id/duel_layout"
             app:layout_constraintTop_toTopOf="@id/duel_layout">
 
-            <Button
+            <TextView
                 android:id="@+id/max_pp_increase"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="#00FFFFFF"
-                android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="+"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.maxPPIncrease()}"
+                android:text="@string/plus"
                 android:textColor="@color/white"
                 android:textSize="36sp"
-                android:textStyle="bold"
-                android:onClick="@{() -> viewModel.maxPPIncrease()}"/>
+                android:textStyle="bold" />
 
 
             <LinearLayout
@@ -309,14 +309,14 @@
                     android:layout_height="12dp" />
             </LinearLayout>
 
-            <Button
+            <TextView
                 android:id="@+id/max_pp_decrease"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="#00FFFFFF"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="-"
+                android:text="@string/minus"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -375,7 +375,7 @@
                     android:gravity="center|center_horizontal|center_vertical"
                     android:includeFontPadding="false"
                     android:rotation="60"
-                    android:text="/"
+                    android:text="@string/slash"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -417,7 +417,7 @@
             android:layout_gravity="center"
             android:background="@drawable/src_assets_battle_btn_turn_start_off"
             android:gravity="center"
-            android:text="我的\n回合"
+            android:text="@string/my_turn"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -446,7 +446,7 @@
                 android:background="#00FFFFFF"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="-"
+                android:text="@string/minus"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -474,7 +474,7 @@
                 android:background="#00FFFFFF"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="+"
+                android:text="@string/plus"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -501,7 +501,7 @@
                 android:background="#00FFFFFF"
                 android:includeFontPadding="false"
                 android:onClick="@{() -> viewModel.opponentHPDecrease()}"
-                android:text="-"
+                android:text="@string/minus"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 android:textStyle="bold" />
@@ -528,7 +528,7 @@
                 android:background="#00FFFFFF"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="+"
+                android:text="@string/plus"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 android:textStyle="bold"

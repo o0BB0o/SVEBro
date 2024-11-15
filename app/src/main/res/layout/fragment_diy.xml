@@ -40,7 +40,7 @@
                     android:layout_weight=".3"
                     android:background="@drawable/src_assets_role_btn_start_02_off"
                     android:gravity="center"
-                    android:text="选择zip文件"
+                    android:text="@string/select_zip"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     tools:text="选择zip文件" />
@@ -56,7 +56,7 @@
                         android:id="@+id/diy_zippath_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Please select a zip file"
+                        android:hint="@string/select_zip_hint"
                         android:enabled="false"
                         android:text="@{viewModel.zipFileName}"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +76,7 @@
                     android:id="@+id/diy_leader_name_inputfield"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Leader Name"
+                    android:hint="@string/enter_leader_name_hint"
                     android:inputType="text"
                     android:text="@={viewModel.leaderNameInput}"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -95,7 +95,7 @@
                     android:id="@+id/diy_class_text_indicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Class: "
+                    android:text="@string/class1"
                     android:textSize="20sp" />
 
                 <Spinner
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/src_assets_role_btn_start_02_off"
             android:gravity="center"
-            android:text="开始导入"
+            android:text="@string/start_inserting_leader"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/src_assets_role_btn_start_02_off"
             android:gravity="center"
-            android:text="准备战斗"
+            android:text="@string/ready_to_battle"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
